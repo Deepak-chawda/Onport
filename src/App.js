@@ -1,24 +1,22 @@
-import logo from './logo.svg';
-import './App.css';
+import React,{useState} from "react";
+import Header from "./componets/Header";
+import { BrowserRouter } from "react-router-dom";
+import Context from "./componets/Context";
 
-function App() {
+const App=()=> {
+  const [contextChange, setcontextChange]=useState("Hello")
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    <BrowserRouter>
+  <Context.Provider
+        value={{
+          contextChange
+        }}>
+    <Header/>
+      <div>
+        <button>Hello button render</button>
+      </div>
+      </Context.Provider>
+      </BrowserRouter>
   );
 }
 
